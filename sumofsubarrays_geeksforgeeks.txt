@@ -1,0 +1,25 @@
+// geeks for geeks zero sum subarrays
+// https://practice.geeksforgeeks.org/problems/zero-sum-subarrays1825/1#
+class Solution{
+    //Function to count subarrays with sum equal to 0.
+    public static long findSubarray(long[] a ,int n) 
+    {
+        
+        int k=0,i;
+HashMap<Long,Long> m=new HashMap<>();
+long prefix=0;long count=0;
+m.put(0L,1L);
+for(i=0;i<n;i++)
+{
+prefix=prefix+a[i];
+if(m.containsKey(prefix-k))
+{
+    count=count+m.get(prefix-k);
+ }
+
+m.put(prefix,m.getOrDefault(prefix,0L)+1);
+}
+return(count);
+        
+    }
+}
